@@ -1,0 +1,70 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background: #f0f0f0;
+}
+
+.container {
+  background: #fff;
+  display: inline-block;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,1);
+}
+
+h2 {
+  font-size: 48px;
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#count {
+    transition: .5s;
+}
+
+/* 
+// Ambil elemen dari DOM
+const countDisplay = document.getElementById('count');
+const btnIncrease = document.getElementById('increase');
+const btnDecrease = document.getElementById('decrease');
+const btnReset = document.getElementById('reset');
+
+// Nilai awal counter
+let count = 0;
+
+// Event Listener
+btnIncrease.addEventListener('click', () => {
+    count++;
+    if (count > 5) countDisplay.style.color = 'green';
+    updateUI();
+});
+
+btnDecrease.addEventListener('click', () => {
+    if (count > 0) count--;
+    if (count == 0 ) countDisplay.style.color = 'red';
+    else if (count <= 5) {
+        countDisplay.style.color = 'black';
+    } 
+    updateUI();
+});
+
+btnReset.addEventListener('click', () => {
+    count = 0;
+    updateUI();
+});
+
+
+
+// Fungsi update tampilan
+function updateUI() {
+    countDisplay.textContent = count;
+}
+
+*/
