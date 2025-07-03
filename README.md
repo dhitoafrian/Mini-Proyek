@@ -1,3 +1,3 @@
 # DOKUMENTASI
 
-# dokumentasi perjalanan saya dalam belajar bahasa pemrograman Javascript
+## dokumentasi perjalanan saya dalam belajar bahasa pemrograman Javascript
