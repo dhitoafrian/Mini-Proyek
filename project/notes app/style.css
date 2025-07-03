@@ -1,0 +1,324 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .input-group {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      transition: all 0.3s ease;
+    }
+
+    .input-group:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    #note-title {
+      width: 100%;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    #note-title::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    #note-title:focus {
+      border-color: rgba(120, 119, 198, 0.6);
+      box-shadow: 0 0 20px rgba(120, 119, 198, 0.2);
+      transform: scale(1.02);
+    }
+
+    #note-content {
+      width: 100%;
+      min-height: 120px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      resize: vertical;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      font-family: inherit;
+    }
+
+    #note-content::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    #note-content:focus {
+      border-color: rgba(120, 119, 198, 0.6);
+      box-shadow: 0 0 20px rgba(120, 119, 198, 0.2);
+      transform: scale(1.01);
+    }
+
+    #add-note-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #7877c6 0%, #ff77c6 100%);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #add-note-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    #add-note-btn:hover::before {
+      left: 100%;
+    }
+
+    #add-note-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(120, 119, 198, 0.4);
+    }
+
+    #add-note-btn:active {
+      transform: translateY(0);
+    }
+
+    #note-list {
+      display: grid;
+      gap: 20px;
+      animation: fadeIn 1s ease-out 0.4s both;
+    }
+
+    .note-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 25px;
+      position: relative;
+      transition: all 0.3s ease;
+      animation: slideInUp 0.5s ease-out;
+      overflow: hidden;
+    }
+
+    .note-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #7877c6, #ff77c6);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .note-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .note-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .note-card h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .note-card p {
+      color: #c0c0c0;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      word-wrap: break-word;
+    }
+
+    .note-card small {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .delete-btn {
+      background: linear-gradient(135deg, #ff4757, #ff3742);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .delete-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.3s;
+    }
+
+    .delete-btn:hover::before {
+      left: 100%;
+    }
+
+    .delete-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+    }
+
+    .delete-btn:active {
+      transform: scale(0.95);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.1rem;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+      }
+      
+      .input-group {
+        padding: 20px;
+      }
+    }
